@@ -27,6 +27,6 @@ installed to your system.
 
 Open a command window and run:
 
-    mvn clean -Dwebdriver.gecko.driver="<path of geckodriver.exe>" -Dbrowser=firefox test
+    mvn clean -Dwebdriver.gecko.driver="<path of geckodriver.exe>" test
 
 This runs Cucumber features using Cucumber's JUnit runner. 

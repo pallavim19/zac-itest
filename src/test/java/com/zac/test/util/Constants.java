@@ -2,9 +2,6 @@ package com.zac.test.util;
 
 public class Constants {
 
-    public static final String BROWSER = "browser";
-    public static final String FIREFOX = "firefox";
-
     public static final String WEB_URL = "http://www.thetestroom.com/jswebapp";
 
     public static final String ANIMAL_DROP_DOWN_LIST = "//table[@id='table1']//div[@class='ng-scope']/select[@class='ng-pristine ng-valid']/option[@value='%s']";
