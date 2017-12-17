@@ -6,20 +6,18 @@ import org.openqa.selenium.WebDriver;
 import static com.zac.test.util.Constants.ANIMAL_DROP_DOWN_LIST;
 import static com.zac.test.util.Constants.CONTINUE_BUTTON;
 
-public class AnimalSelectionPage {
-
-    WebDriver driver;
+public class AnimalSelectionPage extends BasePage {
 
     public AnimalSelectionPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
+    // Home page Continue button
     public void clickContinue() {
-        // Home page Continue button
-        driver.findElement(By.xpath(CONTINUE_BUTTON)).click();
+        click(By.xpath(CONTINUE_BUTTON));
     }
 
     public void selectAnimalFromDropDownList(String animalNumber) {
-        driver.findElement(By.xpath(String.format(ANIMAL_DROP_DOWN_LIST, animalNumber))).click(); // DropDown take 3
+        click(By.xpath(String.format(ANIMAL_DROP_DOWN_LIST, animalNumber)));
     }
 }
