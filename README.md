@@ -2,6 +2,9 @@
 
 Zoo Adoption Center (zac) is web application for adoption of animal. The web testing is covered with Cucumber and Selenium tests.
 
+The web page is "http://www.thetestroom.com/jswebapp"
+
+
 # Instructions
 
 Clone the repo:

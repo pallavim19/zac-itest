@@ -1,11 +1,12 @@
 package com.zac.test.pages;
 
+import com.zac.test.util.Constants;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HomePage {
+import static com.zac.test.util.Constants.*;
 
-    private static final String WEB_URL = "http://www.thetestroom.com/jswebapp";
+public class HomePage {
 
     private WebDriver driver;
 
@@ -14,20 +15,20 @@ public class HomePage {
     }
 
     public void navigate() {
-        driver.navigate().to(WEB_URL);
+        driver.navigate().to(Constants.WEB_URL);
     }
 
     public void provideName(String name) {
         // Provide name in the text field
-        driver.findElement(By.xpath("//table[@id='table1']//td[@class='content']/div[@class='ng-scope']//input[@type='text']")).sendKeys(name);
+        driver.findElement(By.xpath(TEXT_FIELD)).sendKeys(name);
     }
 
     public String getMessageFromTextField() {
-        return driver.findElement(By.xpath("//table[@id='table1']//td[@class='content']/div[@class='ng-scope']/h2[@class='ng-binding']")).getText();
+        return driver.findElement(By.xpath(MESSAGE_TEXT_FIELD)).getText();
     }
 
     public void clickContinue() {
         // Home page Continue button
-        driver.findElement(By.xpath("/html//button[@id='continue_button']")).click();
+        driver.findElement(By.xpath(CONTINUE_BUTTON)).click();
     }
 }

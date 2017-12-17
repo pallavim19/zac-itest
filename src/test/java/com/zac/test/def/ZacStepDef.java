@@ -12,6 +12,8 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import static com.zac.test.util.Constants.*;
+
 public class ZacStepDef {
 
     private WebDriver driver;
@@ -33,7 +35,7 @@ public class ZacStepDef {
     @Then("^Below the text field '(.*?)' is displayed$")
     public void assertConfirmationMessage(String name) {
         String messageFromTextField = homePage.getMessageFromTextField();
-        Assert.assertEquals("Displayed name is wrong!", name, messageFromTextField);
+        Assert.assertEquals(DISPLAYED_NAME_IS_WRONG, name, messageFromTextField);
     }
 
     @When("^I click continue button$")
@@ -64,14 +66,13 @@ public class ZacStepDef {
     public void assertConfirmationMessageFromConfirmationPage() {
         // Home page Continue button
         String confirmationMessage = confirmPage.getConfirmationMessage();
-        Assert.assertEquals("Text confirmation message is wrong!", "Thank you for your selection. " +
-                        "Your animal adoption papers will be sent to you shortly with a lovely card from your selected animal.",
+        Assert.assertEquals(TEXT_CONFIRMATION_MESSAGE_IS_WRONG, CONFIRMATION_MESSAGE,
                 confirmationMessage);
     }
 
     @Before
     public void startUp() {
-        if (System.getProperty("browser").equals("firefox")) {
+        if (System.getProperty(BROWSER).equals(FIREFOX)) {
             //Driver Instantiation: Instantiate driver object as FirefoxDriver
             driver = new FirefoxDriver();
         }
@@ -83,6 +84,6 @@ public class ZacStepDef {
 
     @After
     public void close() {
-        driver.close();
+        driver.quit();
     }
 }
