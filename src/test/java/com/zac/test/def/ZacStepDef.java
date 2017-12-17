@@ -1,5 +1,8 @@
 package com.zac.test.def;
 
+import com.zac.test.driver.DriverManager;
+import com.zac.test.driver.DriverManagerFactory;
+import com.zac.test.driver.DriverType;
 import com.zac.test.pages.AnimalSelectionPage;
 import com.zac.test.pages.ConfirmPage;
 import com.zac.test.pages.HomePage;
@@ -10,12 +13,12 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import static com.zac.test.util.Constants.*;
 
 public class ZacStepDef {
 
+    private DriverManager driverManager;
     private WebDriver driver;
     private HomePage homePage;
     private AnimalSelectionPage animalSelectionPage;
@@ -72,11 +75,16 @@ public class ZacStepDef {
 
     @Before
     public void startUp() {
-        if (System.getProperty(BROWSER).equals(FIREFOX)) {
-            //Driver Instantiation: Instantiate driver object as FirefoxDriver
-            driver = new FirefoxDriver();
-        }
+        initDrivers();
+        initPages();
+    }
 
+    private void initDrivers() {
+        driverManager = DriverManagerFactory.getManager(DriverType.FIREFOX);
+        driver = driverManager.getDriver();
+    }
+
+    private void initPages() {
         homePage = new HomePage(driver);
         animalSelectionPage = new AnimalSelectionPage(driver);
         confirmPage = new ConfirmPage(driver);
@@ -84,6 +92,6 @@ public class ZacStepDef {
 
     @After
     public void close() {
-        driver.quit();
+        driverManager.getDriver().close();
     }
 }
